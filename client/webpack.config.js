@@ -24,6 +24,11 @@ module.exports={
          */
         filename: "main.js"
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'our project', 
+            template: './index.html' }) 
+       ],
     /** "target"
      * setting "node" as target app (server side), and setting it as "web" is 
      * for browser (client side). Default is "web"
