@@ -1,0 +1,31 @@
+{
+  "name": "skill-track",
+  "version": "1.0.0",
+  "description": "Track your job search",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm start --prefix pern_src/client",
+    "server": "npm start --prefix pern_src/server",
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkillTrack-Team/skill-track.git"
+  },
+  "author": "skill-track team",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.2",
+    "sass": "^1.59.3",
+    "sass-loader": "^13.2.1",
+    "webpack": "^5.76.2",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
+}
