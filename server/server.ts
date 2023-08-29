@@ -2,6 +2,13 @@ import express, { Express, NextFunction, Request, Response } from "express";
 import cors from "cors";
 require('dotenv').config();
 const userRouter = require('./routes/userRouter.ts')
+const profileApiMockJsonData = require('./database/mockData/profileApiMockJsonData');
+// console.log(profileApiMockJsonData);
+const messageApiMockJsonData = require('./database/mockData/messageApiMockJsonData');
+console.log(messageApiMockJsonData);
+const connectionsApiMockJsonData = require('./database/mockData/connectionsApiMockJsonData');
+
+// console.log(connectionsApiMockJsonData.elements[0]);
 
 const app: Express = express();
 const PORT = 3000;

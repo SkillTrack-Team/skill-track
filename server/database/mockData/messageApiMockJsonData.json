@@ -1,0 +1,14 @@
+{
+    "recipients": [
+      "urn:li:person:123ABC",
+      "urn:li:person:456DEF"
+    ],
+    "subject": "Group conversation title",
+    "body": "Hello everyone! This is a message conversation to demo the Message API.",
+    "messageType": "MEMBER_TO_MEMBER",
+    "attachments": [
+      "urn:li:digitalMediaAsset:123ABC"
+    ]
+  }
+
+
