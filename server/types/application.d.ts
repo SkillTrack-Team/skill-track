@@ -5,9 +5,9 @@ export interface Application {
   user_id: number;
   company: string;
   position: string;
-  interest_level: number, // default to 0
-  date_submitted: Date | null,
-  location: string | null,
+  interest_level: number; // default to 0
+  date_submitted: Date | null;
+  location: string | null;
   description: string | null;
   application_type: string | null;
   job_posting_url: string | null;

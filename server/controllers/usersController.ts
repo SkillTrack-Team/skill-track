@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 const db = require('../database/db');
-import { User } from '../types';
+import { User, LocalizedData } from '../types';
 
-const UserController = {
+const UsersController = {
   //test controller checking db connection
   getAllUsers: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try{
@@ -20,13 +20,26 @@ const UserController = {
 
   createUser: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try{
-      const {
-        linkedin_id,
-        first_name,
-        last_name,
+      const{
+        firstName,
+        headline,
         vanityName,
-        localizedHeadline
-      } = req.body;
+        id,
+        lastName
+      } = res.locals.profileData;
+
+      function preferredLocaleValue (localizedData:LocalizedData): string{
+        const {localized, preferredLocale} = localizedData;
+
+        const countryLanguagePreference = `${preferredLocale.language}_${preferredLocale.country}`;
+
+        return localized[countryLanguagePreference];
+      }
+
+      const linkedin_id = id;
+      const first_name = preferredLocaleValue(firstName);
+      const last_name = preferredLocaleValue(lastName);
+      const localizedHeadline = preferredLocaleValue(headline);
 
       const values = [
         linkedin_id,
@@ -37,18 +50,19 @@ const UserController = {
       ]
 
       const query = `
-      INSERT INTO users (
-        linkedin_id,
-        first_name,
-        last_name,
-        vanityName,
-        localizedHeadline
-      )
-      VALUES ($1, $2, $3, $4, $5)
-      RETURNING *;
-    `; 
+        INSERT INTO users (
+          linkedin_id,
+          first_name,
+          last_name,
+          vanityName,
+          localizedHeadline
+        )
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING *;
+      `; 
       const insertedUser = await db.query(query, values);
       res.locals.user = insertedUser.rows[0];
+    
       next();
     } catch(error){
       next(error);
@@ -56,4 +70,4 @@ const UserController = {
   },
 }
 
-module.exports = UserController;
+module.exports = UsersController;

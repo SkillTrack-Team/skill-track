@@ -1,14 +1,15 @@
-import express, { Express, NextFunction, Request, Response } from 'express';
+import express, { Express, NextFunction, Request, Response } from 'express'
 
-const userController = require('../controllers/userController');
+const usersController = require('../controllers/usersController')
+const mockLinkedInAuth = require('../controllers/mockLinkedInAuth')
 
 const router = express.Router();
 
-router.get('/', userController.getAllUsers, (req: Request,res: Response) => {
+router.get('/', usersController.getAllUsers, (req: Request,res: Response) => {
   res.status(200).json(res.locals.users);
 });
 
-router.post('/', userController.createUser, (req: Request,res: Response) => {
+router.post('/', mockLinkedInAuth.signUp, usersController.createUser, (req: Request,res: Response) => {
   const successMessage = 'User was created successfully';
   res.status(200).json({
     message: successMessage,
