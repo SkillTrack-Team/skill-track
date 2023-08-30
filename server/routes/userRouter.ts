@@ -8,4 +8,12 @@ router.get('/', userController.getAllUsers, (req: Request,res: Response) => {
   res.status(200).json(res.locals.users);
 });
 
+router.post('/', userController.createUser, (req: Request,res: Response) => {
+  const successMessage = 'User was created successfully';
+  res.status(200).json({
+    message: successMessage,
+    user: res.locals.user
+  });
+});
+
 module.exports = router;

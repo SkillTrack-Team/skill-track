@@ -2,7 +2,8 @@
 
 export interface User {
   id: number;
+  linkedin_id: string,
   first_name: string;
-  last_name: string;
-  linkedin_id: string;
+  vanityName: string;
+  localizedHeadline: string;
 }
