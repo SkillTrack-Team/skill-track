@@ -6,9 +6,9 @@ const UserController = {
   //test controller checking db connection
   getAllUsers: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try{
-      const getUsers = 'SELECT * from users';
+      const query = 'SELECT * from users';
 
-      const response = await db.query(getUsers);
+      const response = await db.query(query);
       const users: User[] = response.rows;
 
       res.locals.users = users;
