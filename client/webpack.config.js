@@ -56,7 +56,10 @@ module.exports={
         /** "liveReload"
          * disable live reload on the browser. "hot" must be set to false for this to work
         */
-        liveReload: true
+        liveReload: true,
+        proxy: {
+            '/api': 'http://localhost:3000'
+        }
     },
     resolve: {
         /** "extensions" 
