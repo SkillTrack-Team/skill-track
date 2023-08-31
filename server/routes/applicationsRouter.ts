@@ -4,16 +4,33 @@ const applicationsController = require('../controllers/applicationsController');
 
 const router = express.Router();
 
-router.get('/', applicationsController.getAllApplications, (req: Request,res: Response) => {
+router.get('/:userId', applicationsController.getAllApplications, (req: Request,res: Response) => {
   res.status(200).json(res.locals.applications);
 });
 
-router.post('/', applicationsController.createApplication, (req: Request,res: Response) => {
-  res.status(200).send('Successfully created application');
+router.post('/:userId', applicationsController.createApplication, (req: Request,res: Response) => {
+  const successMessage = 'Application was successfully created';
+  res.status(200).json({
+    message: successMessage,
+    application: res.locals.application
+  });
 });
 
-router.delete('/', applicationsController.deleteApplication, (req: Request,res: Response) => {
-  res.status(200).send('Successfully deleted application');
+router.put('/:applicationId', applicationsController.updateApplication, (req: Request,res: Response) => {
+  const successMessage = 'Application was successfully updated';
+  res.status(200).json({
+    message: successMessage,
+    application: res.locals.application
+  });
+});
+
+
+router.delete('/:applicationId', applicationsController.deleteApplication, (req: Request,res: Response) => {
+  const successMessage = 'Application was successfully deleted';
+  res.status(200).json({
+    message: successMessage,
+    application: res.locals.application
+  });
 });
 
 
