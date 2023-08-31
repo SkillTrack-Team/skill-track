@@ -6,7 +6,7 @@ const interviewRoundsController = {
   //test controller checking db connection
   getInterviewRounds: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try{
-      const application_id = req.params.id;
+      const application_id = req.params.applicationId;
       const values = [application_id]
       const query = `SELECT * from interview_rounds WHERE application_id = $1;`;
 
@@ -22,9 +22,9 @@ const interviewRoundsController = {
 
   createInterviewRound: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try{
+      const application_id = req.params.applicationId;
       const {
         round_number,
-        application_id,
         contents,
         date,
         internal_contact,
@@ -66,7 +66,7 @@ const interviewRoundsController = {
 
   updateInterviewRound: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try{
-      const interview_round_id = req.params.id;
+      const interview_round_id = req.params.interviewRoundId;
       const {
         round_number,
         application_id,
@@ -112,7 +112,7 @@ const interviewRoundsController = {
 
   deleteInterviewRound: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try{
-      const interview_round_id = req.params.id;
+      const interview_round_id = req.params.interviewRoundId;
       const values = [interview_round_id]
       const query = `
       DELETE FROM interview_rounds WHERE id = $1 RETURNING *;`

@@ -4,11 +4,11 @@ const interviewRoundsController = require('../controllers/interviewRoundsControl
 
 const router = express.Router();
 
-router.get('/:id', interviewRoundsController.getInterviewRounds, (req: Request,res: Response) => {
+router.get('/:applicationId', interviewRoundsController.getInterviewRounds, (req: Request,res: Response) => {
   res.status(200).json(res.locals.interviewRounds);
 });
 
-router.post('/', interviewRoundsController.createInterviewRound, (req: Request,res: Response) => {
+router.post('/:applicationId', interviewRoundsController.createInterviewRound, (req: Request,res: Response) => {
   const successMessage = 'Interview round was created successfully';
   res.status(200).json({
     message: successMessage,
@@ -16,7 +16,7 @@ router.post('/', interviewRoundsController.createInterviewRound, (req: Request,r
   });
 });
 
-router.put('/:id', interviewRoundsController.updateInterviewRound, (req: Request,res: Response) => {
+router.put('/:interviewRoundId', interviewRoundsController.updateInterviewRound, (req: Request,res: Response) => {
   const successMessage = 'Interview round was updated successfully';
   res.status(200).json({
     message: successMessage,
@@ -24,7 +24,7 @@ router.put('/:id', interviewRoundsController.updateInterviewRound, (req: Request
   });
 });
 
-router.delete('/:id', interviewRoundsController.deleteInterviewRound, (req: Request,res: Response) => {
+router.delete('/:interviewRoundId', interviewRoundsController.deleteInterviewRound, (req: Request,res: Response) => {
   const successMessage = 'Interview round was deleted successfully';
   res.status(200).json({
     message: successMessage,
