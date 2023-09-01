@@ -3,7 +3,6 @@ const db = require('../database/db');
 import { Application } from '../types';
 
 const applicationsController = {
-  //test controller checking db connection
   getAllApplications: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try{
       const id = req.params.userId;

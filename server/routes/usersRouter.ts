@@ -5,16 +5,30 @@ const mockLinkedInAuth = require('../controllers/mockLinkedInAuth')
 
 const router = express.Router();
 
-router.get('/', usersController.getAllUsers, (req: Request,res: Response) => {
-  res.status(200).json(res.locals.users);
+router.get('/', usersController.getUser, (req: Request,res: Response) => {
+  if(res.locals.users){
+    res.status(200).json(res.locals.users);
+  }else{
+    res.sendStatus(404);
+  }
+  
 });
 
-router.post('/', mockLinkedInAuth.signUp, usersController.createUser, (req: Request,res: Response) => {
+router.post('/', usersController.createUser, (req: Request,res: Response) => {
   const successMessage = 'User was created successfully';
   res.status(200).json({
     message: successMessage,
     user: res.locals.user
   });
 });
+
+// LinkedInAuth mock setup
+// router.post('/', mockLinkedInAuth.signUp, usersController.createUser, (req: Request,res: Response) => {
+//   const successMessage = 'User was created successfully';
+//   res.status(200).json({
+//     message: successMessage,
+//     user: res.locals.user
+//   });
+// });
 
 module.exports = router;

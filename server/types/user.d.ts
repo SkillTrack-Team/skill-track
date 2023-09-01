@@ -7,3 +7,7 @@ export interface User {
   vanityName: string;
   localizedHeadline: string;
 }
+export interface UserFrontend {
+  username: string,
+  password: string
+}

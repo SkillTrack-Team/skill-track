@@ -8,11 +8,12 @@ router.get('/:userId', applicationsController.getAllApplications, (req: Request,
   res.status(200).json(res.locals.applications);
 });
 
-router.post('/:userId', applicationsController.createApplication, (req: Request,res: Response) => {
+router.post('/:userId', applicationsController.createApplication, applicationsController.getAllApplications, (req: Request,res: Response) => {
   const successMessage = 'Application was successfully created';
   res.status(200).json({
     message: successMessage,
-    application: res.locals.application
+    addedApplication: res.locals.application,
+    applications: res.locals.applications
   });
 });
 
