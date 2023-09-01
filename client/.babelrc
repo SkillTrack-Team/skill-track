@@ -1,0 +1,11 @@
+{
+  // set of plugins to support features
+  "presets": [
+      "@babel/preset-env", //compiling ES2015+ syntax
+      "@babel/preset-react" //for react
+  ],
+  // Babel code transformations enabled by applying plugins/presets to config file
+  "plugins": [
+      "@babel/plugin-transform-runtime"
+  ]
+}
