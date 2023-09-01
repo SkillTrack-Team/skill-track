@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import './styles/App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -28,17 +27,3 @@ function App() {
 }
 
 export default App;
-=======
-
-import React from "react";
-
-const App = () =>{
-    return (
-        <h1>
-            Welcome to React App thats build using Webpack and Babel separately
-        </h1>
-    )
-}
-
-export default App
->>>>>>> origin
