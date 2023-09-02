@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import JobTable from './JobTable';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
 import ApplicationModal from './ApplicationModal';
 
 export default function Home(): JSX.Element {
