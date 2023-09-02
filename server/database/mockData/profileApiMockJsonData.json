@@ -1,0 +1,37 @@
+{
+  "firstName":{
+     "localized":{
+        "en_US":"Bob"
+     },
+     "preferredLocale":{
+        "country":"US",
+        "language":"en"
+     }
+  },
+  "localizedFirstName": "Bob",
+  "headline":{
+     "localized":{
+        "en_US":"API Enthusiast at LinkedIn"
+     },
+     "preferredLocale":{
+        "country":"US",
+        "language":"en"
+     }
+  },
+  "localizedHeadline": "API Enthusiast at LinkedIn",
+  "vanityName": "bsmith",
+  "id":"yrZCpj2Z12",
+  "lastName":{
+     "localized":{
+        "en_US":"Smith"
+     },
+     "preferredLocale":{
+        "country":"US",
+        "language":"en"
+     }
+  },
+  "localizedLastName": "Smith",
+  "profilePicture": {
+       "displayImage": "urn:li:digitalmediaAsset:C4D00AAAAbBCDEFGhiJ"
+  }
+}
