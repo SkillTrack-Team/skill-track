@@ -1,0 +1,24 @@
+{
+  "name": "skill-track",
+  "version": "1.0.0",
+  "description": "root directory skill-track",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkillTrack-Team/skill-track.git"
+  },
+  "author": "skill-track team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkillTrack-Team/skill-track/issues"
+  },
+  "homepage": "https://github.com/SkillTrack-Team/skill-track#readme"
+}

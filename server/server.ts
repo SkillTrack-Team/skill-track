@@ -7,9 +7,10 @@ const interviewRoundsRouter = require('./routes/interviewRoundsRouter.ts')
 const commentsRouter = require('./routes/commentsRouter.ts')
 
 const app: Express = express();
-const PORT = 3000;
+const PORT = 8080;
 
-app.use(cors({ credentials: true }));
+app.use(cors());
+
 app.use(express.json());
 
 app.use('/api/users', usersRouter);

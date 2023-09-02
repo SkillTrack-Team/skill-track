@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from '../api/axios';
+
 import {
   Button,
   Dialog,
@@ -19,28 +21,52 @@ import {
 interface ApplicationModalProps {
   open?: boolean;
   onClose?: (event: React.MouseEvent) => void;
+  data: {
+    company: string;
+    position: string;
+    interest_level: number;
+    date_submitted: Date;
+    location: string;
+    description: string;
+    application_type: string;
+    job_posting_url: string;
+    internal_contact: string;
+    internal_contact_email: string;
+    follow_up: boolean;
+    notes: string;
+    status: string;
+  },
+  applicationId?: number
 }
 
 const ApplicationModal: React.FC<ApplicationModalProps> = ({
   open,
   onClose,
+  data,
+  applicationId
 }) => {
-  const [formData, setFormData] = useState({
-    user_id: '',
-    company: '',
-    position: '',
-    interest_level: '',
-    date_submitted: '',
-    location: '',
-    description: '',
-    application_type: '',
-    job_posting_url: '',
-    internal_contact: '',
-    internal_contact_email: '',
-    follow_up: 'no',
-    notes: '',
-    status: '',
-  });
+  const [formData, setFormData] = useState(data);
+
+  const saveApplication = async() => {
+    try {
+      const POSTAPPLICATIONSURL = 'applications/1';
+      
+
+      // if(applicationId !== null){
+      //   const PUTAPPLICATIONSURL = `applications/${applicationId}`;
+      //   await axios.put(PUTAPPLICATIONSURL, formData);
+      // }else{
+        await axios.post(POSTAPPLICATIONSURL, formData);
+      // }
+
+      window.location.reload();
+
+      handleClose();
+      
+    } catch(err){
+      console.log(err)
+    }
+  }
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -55,10 +81,10 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
   const handleClose = () => {
     onClose();
     setFormData({
-      user_id: '',
+      id: null,
       company: '',
       position: '',
-      interest_level: '',
+      interest_level: 0,
       date_submitted: '',
       location: '',
       description: '',
@@ -66,7 +92,7 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
       job_posting_url: '',
       internal_contact: '',
       internal_contact_email: '',
-      follow_up: 'no',
+      follow_up: false,
       notes: '',
       status: '',
     });
@@ -199,8 +225,8 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
             value={formData.follow_up}
             onChange={handleInputChange}
           >
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio />} label="No" />
+            <FormControlLabel value="true" control={<Radio />} label="Yes" />
+            <FormControlLabel value="false" control={<Radio />} label="No" />
           </RadioGroup>
         </FormControl>
 
@@ -239,7 +265,7 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
         <Button onClick={handleClose} color="primary">
           Cancel
         </Button>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={saveApplication} color="primary">
           Save
         </Button>
       </DialogActions>
